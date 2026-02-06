@@ -9,6 +9,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix
@@ -29,26 +30,22 @@ def render():
         dataset_name = st.selectbox("Elige el Campo de Batalla", ["Iris (4D)", "Wine (13D)", "Breast Cancer (30D)"])
         
         # Carga de datos
-        if dataset_name == "Iris (4D)":
-            data = datasets.load_iris()
-        elif dataset_name == "Wine (13D)":
-            data = datasets.load_wine()
-        else:
-            data = datasets.load_breast_cancer()
-        
-        X, y = data.data, data.target
-        class_names = data.target_names
-
-        # Selección de Modelos
-        selected_models = st.multiselect(
-            "Elige tus Gladiadores",
-            ["SVM", "Decision Tree", "KNN", "MLP (Neural Net)"],
-            default=["SVM", "Decision Tree"]
-        )
-
         test_size = st.slider("Tamaño de Test (%)", 10, 50, 20) / 100.0
 
     # --- 2. Procesamiento (Pipeline) ---
+    @st.cache_data
+    def load_and_process_data(ds_name):
+        if ds_name == "Iris (4D)":
+            data = datasets.load_iris()
+        elif ds_name == "Wine (13D)":
+            data = datasets.load_wine()
+        else:
+            data = datasets.load_breast_cancer()
+        return data.data, data.target, data.target_names
+
+    # Use cached function
+    X, y, class_names = load_and_process_data(dataset_name)
+
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
     X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=test_size, random_state=42, stratify=y)
@@ -60,6 +57,9 @@ def render():
     
     with col_main:
         st.info(f"ℹ️ **PCA Info:** Proyección 2D conserva el **{var_explicada:.2f}%** de la varianza.")
+        if var_explicada < 50.0:
+            st.warning("⚠️ **Alerta Pedagógica:** La varianza explicada es baja (<50%). La visualización 2D puede no reflejar la complejidad real de los datos.")
+        
         if st.checkbox("Mostrar Vectores Propios (Bonus)"):
              st.caption("Los ejes (PC1, PC2) se alinean con la mayor varianza de los datos.")
 
@@ -78,6 +78,8 @@ def render():
                     clf = SVC(kernel="rbf", C=1.0, probability=True)
                 elif model_name == "Decision Tree":
                     clf = DecisionTreeClassifier(max_depth=5)
+                elif model_name == "Random Forest":
+                    clf = RandomForestClassifier(n_estimators=100, max_depth=5)
                 elif model_name == "KNN":
                     clf = KNeighborsClassifier(n_neighbors=5)
                 elif model_name == "MLP (Neural Net)":

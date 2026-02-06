@@ -44,7 +44,19 @@ def render():
         lr = st.slider("Learning Rate", 0.001, 0.1, 0.01, format="%.3f")
         max_epochs = st.slider("Total Épocas", 10, 500, 100)
         
-        start_btn = st.button("▶️ Iniciar Entrenamiento")
+        st.caption("Presets Didácticos:")
+        if st.button("🧠 Modo Regresión Logística (1 Neurona)"):
+            hidden_layer_sizes = () # Sin capas ocultas = Perceptrón/Logística
+            lr = 0.05
+            st.toast("Configurado: Sin capas ocultas (Input -> Output).")
+
+        col_btns1, col_btns2 = st.columns(2)
+        with col_btns1:
+             start_btn = st.button("▶️ Iniciar")
+        with col_btns2:
+             if st.button("🔄 Reiniciar"):
+                 st.session_state.clear()
+                 st.rerun()
 
     # --- 2. Preparación visualización ---
     with col2:
