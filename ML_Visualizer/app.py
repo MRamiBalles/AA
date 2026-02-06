@@ -1,5 +1,5 @@
 import streamlit as st
-from modules import regression, svm, neural_net, clustering
+from modules import regression, svm, neural_net, clustering, trees
 
 # Configuración de la página
 st.set_page_config(page_title="ML-Visualizer: Aprendizaje Automático", layout="wide")
@@ -11,7 +11,7 @@ st.markdown("Herramienta interactiva para explorar los conceptos de la asignatur
 st.sidebar.title("Temario")
 opcion = st.sidebar.radio(
     "Selecciona un tema:",
-    ("1. Regresión Lineal", "2. SVM (Vectores de Soporte)", "3. Redes Neuronales (En Vivo)", "4. Clustering (K-Means)")
+    ("1. Regresión Lineal", "2. SVM (Vectores de Soporte)", "3. Redes Neuronales (En Vivo)", "4. Clustering (K-Means)", "5. Árboles (Lógica Simbólica)")
 )
 
 # Enrutamiento de Módulos
@@ -23,5 +23,7 @@ elif opcion == "3. Redes Neuronales (En Vivo)":
     neural_net.render()
 elif opcion == "4. Clustering (K-Means)":
     clustering.render()
+elif opcion == "5. Árboles (Lógica Simbólica)":
+    trees.render()
 else:
     st.info("Módulo en desarrollo.")
