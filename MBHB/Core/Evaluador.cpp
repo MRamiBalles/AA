@@ -42,5 +42,9 @@ long long calcularDelta(int r, int s, const vector<int>& solucion, const vector<
         }
     }
     
+    // Add interaction between r and s
+    delta -= (flujo[r][s] * distancia[u_r][u_s] + flujo[s][r] * distancia[u_s][u_r]);
+    delta += (flujo[r][s] * distancia[u_s][u_r] + flujo[s][r] * distancia[u_r][u_s]);
+    
     return delta;
 }
