@@ -1,55 +1,57 @@
 #include <vector>
 #include <iostream>
+#include <fstream>
 #include "Mutation.cpp"
 
 using namespace std;
-
-// --- ILS: Iterated Local Search ---
-// Estrategia: Búsqueda Local -> Perturbación -> Búsqueda Local -> Criterio Aceptación
-// Ejecución: 10 Iteraciones (1 inicial + 9 reinicios)
-// Perturbación: Mutación Sublista n/4
 
 struct ResultadoILS {
     vector<int> solucion;
     long long coste;
 };
 
-ResultadoILS iteratedLocalSearch(const vector<vector<int>>& flujo, const vector<vector<int>>& distancia, int n) {
-    // 1. Solución Inicial
+ResultadoILS iteratedLocalSearch(const vector<vector<int>>& flujo, const vector<vector<int>>& distancia, int n, string logFile = "") {
+    ofstream log;
+    if(logFile != "") {
+        log.open(logFile);
+        log << "Iter,CosteActual,MejorGlobal,DistanciaHammingAnt\n";
+    }
+
+    // 1. Inicial
     vector<int> solActual = generarSolucionAleatoria(n);
     solActual = busquedaLocalBestImprovement(solActual, flujo, distancia);
     long long costeActual = evaluarSolucion(solActual, flujo, distancia);
     
-    // Mejor Global
     vector<int> mejorGlobal = solActual;
     long long costeMejorGlobal = costeActual;
     
-    // Bucle de Reinicios (9 iteraciones adicionales, total 10 óptimos locales explorados)
     int iteraciones = 9; 
     
+    if(logFile != "") log << "0," << costeActual << "," << costeMejorGlobal << ",0\n";
+    
     for(int i = 0; i < iteraciones; i++) {
-        // Copia para perturbar
-        vector<int> solCandidata = mejorGlobal; // ILS suele perturbar desde el MEJOR encontrado (Trayectoria)
-                                                // O desde el actual? La guía dice "si Coste(S') < Coste(Best)... actualizamos". 
-                                                // Implica que siempre intentamos mejorar el Best.
+        vector<int> solCandidata = mejorGlobal; 
         
-        // 2. Perturbación (Mutación)
+        // 2. Perturbación
         int tamSublista = n / 4;
         mutarSublista(solCandidata, tamSublista);
         
-        // 3. Búsqueda Local
+        // 3. BL
         solCandidata = busquedaLocalBestImprovement(solCandidata, flujo, distancia);
         long long costeCandidata = evaluarSolucion(solCandidata, flujo, distancia);
         
-        // 4. Criterio de Aceptación (El Mejor)
-        // Aceptamos solo si mejora estrictamente el histórico
+        // Stats
+        int hamm = distanciaHamming(solCandidata, mejorGlobal); // Cuánto nos alejamos del mejor anterior?
+        
+        // 4. Aceptación
         if (costeCandidata < costeMejorGlobal) {
             mejorGlobal = solCandidata;
             costeMejorGlobal = costeCandidata;
-            // solActual = solCandidata; // En esta variante "Best", la base de mutación siempre es el mejor.
         }
-        // Si no mejora, el bucle siguiente volverá a mutar 'mejorGlobal'.
+        
+        if(logFile != "") log << (i+1) << "," << costeCandidata << "," << costeMejorGlobal << "," << hamm << "\n";
     }
     
+    if(logFile != "") log.close();
     return {mejorGlobal, costeMejorGlobal};
 }

@@ -3,9 +3,17 @@
 
 using namespace std;
 
+// Métrica global de esfuerzo
+long long numEvaluaciones = 0;
+
+void resetEvaluaciones() {
+    numEvaluaciones = 0;
+}
+
 // Evaluador de Coste para QAP
 // Coste = Sum(F[i][j] * D[S[i]][S[j]])
 long long evaluarSolucion(const vector<int>& solucion, const vector<vector<int>>& flujo, const vector<vector<int>>& distancia) {
+    numEvaluaciones++;
     long long coste = 0;
     size_t n = solucion.size();
     
@@ -22,6 +30,12 @@ long long evaluarSolucion(const vector<int>& solucion, const vector<vector<int>>
 // Cálculo eficiente del Delta (Diferencia de coste al intercambiar r y s)
 // Complejidad O(n) en vez de O(n^2)
 long long calcularDelta(int r, int s, const vector<int>& solucion, const vector<vector<int>>& flujo, const vector<vector<int>>& distancia) {
+    // Delta también cuenta como evaluación parcial (esfuerzo computacional)
+    // numEvaluaciones++; // Descomentar si se quiere contar deltas. Para QAP, el Delta es O(n) y evaluar es O(n^2).
+    // Usualmente para comparación justa se cuenta 1 eval completa = N deltas? 
+    // Por simplicidad y siguiendo prácticas habituales donde Delta es la operación atómica de BL:
+    numEvaluaciones++; 
+
     long long delta = 0;
     size_t n = solucion.size();
     
