@@ -32,6 +32,13 @@ def render():
         # Carga de datos
         test_size = st.slider("Tamaño de Test (%)", 10, 50, 20) / 100.0
 
+        # Selección de Modelos
+        selected_models = st.multiselect(
+            "Selecciona Gladiadores",
+            ["SVM", "Decision Tree", "Random Forest", "KNN", "MLP (Neural Net)"],
+            default=["SVM", "Decision Tree"]
+        )
+
     # --- 2. Procesamiento (Pipeline) ---
     @st.cache_data
     def load_and_process_data(ds_name):
