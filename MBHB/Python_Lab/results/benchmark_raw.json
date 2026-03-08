@@ -1,0 +1,142 @@
+[
+    {
+        "algorithm": "Greedy",
+        "instance": "nug5.dat",
+        "cost": 82,
+        "time_seconds": 0.0009400844573974609,
+        "parameters": {}
+    },
+    {
+        "algorithm": "Greedy",
+        "instance": "nug5.dat",
+        "cost": 82,
+        "time_seconds": 4.553794860839844e-05,
+        "parameters": {}
+    },
+    {
+        "algorithm": "Greedy",
+        "instance": "nug5.dat",
+        "cost": 82,
+        "time_seconds": 3.4332275390625e-05,
+        "parameters": {}
+    },
+    {
+        "algorithm": "Greedy",
+        "instance": "nug5.dat",
+        "cost": 82,
+        "time_seconds": 3.1948089599609375e-05,
+        "parameters": {}
+    },
+    {
+        "algorithm": "Greedy",
+        "instance": "nug5.dat",
+        "cost": 82,
+        "time_seconds": 3.2901763916015625e-05,
+        "parameters": {}
+    },
+    {
+        "algorithm": "LocalSearch",
+        "instance": "nug5.dat",
+        "cost": 58,
+        "time_seconds": 0.000518798828125,
+        "parameters": {}
+    },
+    {
+        "algorithm": "LocalSearch",
+        "instance": "nug5.dat",
+        "cost": 58,
+        "time_seconds": 0.0002627372741699219,
+        "parameters": {}
+    },
+    {
+        "algorithm": "LocalSearch",
+        "instance": "nug5.dat",
+        "cost": 58,
+        "time_seconds": 0.00017786026000976562,
+        "parameters": {}
+    },
+    {
+        "algorithm": "LocalSearch",
+        "instance": "nug5.dat",
+        "cost": 58,
+        "time_seconds": 0.0002186298370361328,
+        "parameters": {}
+    },
+    {
+        "algorithm": "LocalSearch",
+        "instance": "nug5.dat",
+        "cost": 58,
+        "time_seconds": 0.0002124309539794922,
+        "parameters": {}
+    },
+    {
+        "algorithm": "SimulatedAnnealing",
+        "instance": "nug5.dat",
+        "cost": 58,
+        "time_seconds": 0.17958569526672363,
+        "parameters": {}
+    },
+    {
+        "algorithm": "SimulatedAnnealing",
+        "instance": "nug5.dat",
+        "cost": 58,
+        "time_seconds": 0.22041749954223633,
+        "parameters": {}
+    },
+    {
+        "algorithm": "SimulatedAnnealing",
+        "instance": "nug5.dat",
+        "cost": 58,
+        "time_seconds": 0.18368864059448242,
+        "parameters": {}
+    },
+    {
+        "algorithm": "SimulatedAnnealing",
+        "instance": "nug5.dat",
+        "cost": 58,
+        "time_seconds": 0.17818689346313477,
+        "parameters": {}
+    },
+    {
+        "algorithm": "SimulatedAnnealing",
+        "instance": "nug5.dat",
+        "cost": 58,
+        "time_seconds": 0.169541597366333,
+        "parameters": {}
+    },
+    {
+        "algorithm": "TabuSearch",
+        "instance": "nug5.dat",
+        "cost": 58,
+        "time_seconds": 0.33867692947387695,
+        "parameters": {}
+    },
+    {
+        "algorithm": "TabuSearch",
+        "instance": "nug5.dat",
+        "cost": 58,
+        "time_seconds": 0.3502078056335449,
+        "parameters": {}
+    },
+    {
+        "algorithm": "TabuSearch",
+        "instance": "nug5.dat",
+        "cost": 58,
+        "time_seconds": 0.33089470863342285,
+        "parameters": {}
+    },
+    {
+        "algorithm": "TabuSearch",
+        "instance": "nug5.dat",
+        "cost": 58,
+        "time_seconds": 0.332672119140625,
+        "parameters": {}
+    },
+    {
+        "algorithm": "TabuSearch",
+        "instance": "nug5.dat",
+        "cost": 58,
+        "time_seconds": 0.3333432674407959,
+        "parameters": {}
+    }
+]
