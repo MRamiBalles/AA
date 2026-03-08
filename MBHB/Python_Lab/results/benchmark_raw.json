@@ -3,7 +3,7 @@
         "algorithm": "Greedy",
         "instance": "nug5.dat",
         "cost": 82,
-        "time_seconds": 0.00010728836059570312,
+        "time_seconds": 0.000110626220703125,
         "history": [
             [
                 1,
@@ -16,7 +16,7 @@
         "algorithm": "Greedy",
         "instance": "nug5.dat",
         "cost": 82,
-        "time_seconds": 3.9577484130859375e-05,
+        "time_seconds": 4.029273986816406e-05,
         "history": [
             [
                 1,
@@ -29,7 +29,7 @@
         "algorithm": "Greedy",
         "instance": "nug5.dat",
         "cost": 82,
-        "time_seconds": 3.3855438232421875e-05,
+        "time_seconds": 4.124641418457031e-05,
         "history": [
             [
                 1,
@@ -55,7 +55,7 @@
         "algorithm": "Greedy",
         "instance": "nug5.dat",
         "cost": 82,
-        "time_seconds": 4.744529724121094e-05,
+        "time_seconds": 3.266334533691406e-05,
         "history": [
             [
                 1,
@@ -68,7 +68,7 @@
         "algorithm": "LocalSearch",
         "instance": "nug5.dat",
         "cost": 58,
-        "time_seconds": 0.00033736228942871094,
+        "time_seconds": 0.0002658367156982422,
         "history": [
             [
                 1,
@@ -97,7 +97,7 @@
         "algorithm": "LocalSearch",
         "instance": "nug5.dat",
         "cost": 58,
-        "time_seconds": 0.00028014183044433594,
+        "time_seconds": 0.0002562999725341797,
         "history": [
             [
                 1,
@@ -130,7 +130,7 @@
         "algorithm": "LocalSearch",
         "instance": "nug5.dat",
         "cost": 58,
-        "time_seconds": 0.0001895427703857422,
+        "time_seconds": 0.0001735687255859375,
         "history": [
             [
                 1,
@@ -159,7 +159,7 @@
         "algorithm": "LocalSearch",
         "instance": "nug5.dat",
         "cost": 58,
-        "time_seconds": 0.0002460479736328125,
+        "time_seconds": 0.00021958351135253906,
         "history": [
             [
                 1,
@@ -192,7 +192,7 @@
         "algorithm": "LocalSearch",
         "instance": "nug5.dat",
         "cost": 58,
-        "time_seconds": 0.000225067138671875,
+        "time_seconds": 0.00021028518676757812,
         "history": [
             [
                 1,
@@ -225,7 +225,7 @@
         "algorithm": "SimulatedAnnealing",
         "instance": "nug5.dat",
         "cost": 58,
-        "time_seconds": 0.1683974266052246,
+        "time_seconds": 0.16374588012695312,
         "history": [
             [
                 1,
@@ -39514,7 +39514,7 @@
         "algorithm": "SimulatedAnnealing",
         "instance": "nug5.dat",
         "cost": 58,
-        "time_seconds": 0.16895699501037598,
+        "time_seconds": 0.36399292945861816,
         "history": [
             [
                 1,
@@ -78699,7 +78699,7 @@
         "algorithm": "SimulatedAnnealing",
         "instance": "nug5.dat",
         "cost": 58,
-        "time_seconds": 0.1642284393310547,
+        "time_seconds": 0.16254615783691406,
         "history": [
             [
                 1,
@@ -117996,7 +117996,7 @@
         "algorithm": "SimulatedAnnealing",
         "instance": "nug5.dat",
         "cost": 58,
-        "time_seconds": 0.16661715507507324,
+        "time_seconds": 0.1775960922241211,
         "history": [
             [
                 1,
@@ -157481,7 +157481,7 @@
         "algorithm": "SimulatedAnnealing",
         "instance": "nug5.dat",
         "cost": 58,
-        "time_seconds": 0.16316771507263184,
+        "time_seconds": 0.1962110996246338,
         "history": [
             [
                 1,
@@ -196646,7 +196646,7 @@
         "algorithm": "TabuSearch",
         "instance": "nug5.dat",
         "cost": 58,
-        "time_seconds": 0.4782745838165283,
+        "time_seconds": 0.6974067687988281,
         "history": [
             [
                 1,
@@ -198659,7 +198659,7 @@
         "algorithm": "TabuSearch",
         "instance": "nug5.dat",
         "cost": 58,
-        "time_seconds": 0.31764793395996094,
+        "time_seconds": 0.3448033332824707,
         "history": [
             [
                 1,
@@ -200672,7 +200672,7 @@
         "algorithm": "TabuSearch",
         "instance": "nug5.dat",
         "cost": 58,
-        "time_seconds": 0.3126957416534424,
+        "time_seconds": 0.3226168155670166,
         "history": [
             [
                 1,
@@ -202685,7 +202685,7 @@
         "algorithm": "TabuSearch",
         "instance": "nug5.dat",
         "cost": 58,
-        "time_seconds": 0.31452465057373047,
+        "time_seconds": 0.32003116607666016,
         "history": [
             [
                 1,
@@ -204698,7 +204698,7 @@
         "algorithm": "TabuSearch",
         "instance": "nug5.dat",
         "cost": 58,
-        "time_seconds": 0.527949333190918,
+        "time_seconds": 0.3507199287414551,
         "history": [
             [
                 1,
