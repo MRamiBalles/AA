@@ -17,11 +17,11 @@ class BaseAlgorithm(ABC):
     @abstractmethod
     def solve(self):
         """
-        Executes the algorithm and returns the best solution and its cost.
+        Executes the algorithm and returns the best solution, its cost, and convergence history.
         Returns:
             best_permutation (np.ndarray)
             best_cost (int)
-            execution_time (float)
+            history (list of tuples): [(eval_count, best_cost_at_eval), ...]
         """
         pass
 
@@ -30,6 +30,6 @@ class BaseAlgorithm(ABC):
         Wrapper to measure execution time.
         """
         start_time = time.time()
-        best_perm, best_cost = self.solve()
+        best_perm, best_cost, history = self.solve()
         end_time = time.time()
-        return best_perm, best_cost, end_time - start_time
+        return best_perm, best_cost, end_time - start_time, history

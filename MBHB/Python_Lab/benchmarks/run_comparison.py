@@ -34,9 +34,9 @@ def execute_benchmarks(instance_path, num_runs=5):
                 # Metaheuristics can accept an optional initial_perm
                 algo = AlgoClass(n, flow, dist, initial_perm=None, seed=42+i)
                 
-            best_perm, best_cost, time_taken = algo.run()
+            best_perm, best_cost, time_taken, history = algo.run()
             
-            metrics.log_result(name, os.path.basename(instance_path), best_cost, time_taken)
+            metrics.log_result(name, os.path.basename(instance_path), best_cost, time_taken, history=history)
             
     # Save results
     os.makedirs("results", exist_ok=True)

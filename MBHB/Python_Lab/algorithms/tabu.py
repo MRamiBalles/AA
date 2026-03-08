@@ -31,6 +31,9 @@ class TabuSearch(BaseAlgorithm):
         iteraciones_totales = 100 * self.n
         reinicio_interval = 8 * self.n
         
+        evaluations = 1
+        history = [(evaluations, coste_mejor_global)]
+        
         for iter_count in range(1, iteraciones_totales + 1):
             
             mejor_delta_vecindario = float('inf')
@@ -40,6 +43,7 @@ class TabuSearch(BaseAlgorithm):
             for _ in range(40):
                 r, s = np.random.choice(self.n, 2, replace=False)
                 
+                evaluations += 1
                 delta = calculate_delta(actual, self.flow, self.distance, r, s)
                 coste_vecino = coste_actual + delta
                 
@@ -66,6 +70,9 @@ class TabuSearch(BaseAlgorithm):
                 if coste_actual < coste_mejor_global:
                     mejor_global = np.copy(actual)
                     coste_mejor_global = coste_actual
+                    
+            # Record best cost over evaluation history
+            history.append((evaluations, coste_mejor_global))
             
             # Restart Policy (Diversification)
             if iter_count % reinicio_interval == 0:
@@ -73,4 +80,4 @@ class TabuSearch(BaseAlgorithm):
                 coste_actual = calculate_fitness(actual, self.flow, self.distance)
                 memoria_tabu.fill(0)
                 
-        return mejor_global, coste_mejor_global
+        return mejor_global, coste_mejor_global, history

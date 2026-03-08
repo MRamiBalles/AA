@@ -25,4 +25,5 @@ class GreedyAlgorithm(BaseAlgorithm):
         from core.evaluator import calculate_fitness
         cost = calculate_fitness(permutation, self.flow, self.distance)
         
-        return permutation, cost
+        # Greedy is deterministic, one step
+        return permutation, cost, [(1, cost)]

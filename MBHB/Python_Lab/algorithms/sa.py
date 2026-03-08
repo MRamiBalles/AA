@@ -31,8 +31,10 @@ class SimulatedAnnealing(BaseAlgorithm):
         # (MU / -log(PHI)) * costeInicial
         t0 = (self.mu / -math.log(self.phi)) * coste_actual
         t = t0
-        
         max_enfriamientos = 50 * self.n
+        
+        evaluations = 1
+        history = [(evaluations, coste_mejor)]
         
         for k in range(max_enfriamientos):
             exitos = 0
@@ -40,6 +42,7 @@ class SimulatedAnnealing(BaseAlgorithm):
             
             while vecinos_generados < 40 and exitos < 5:
                 vecinos_generados += 1
+                evaluations += 1
                 
                 # Generate random swap
                 r, s = np.random.choice(self.n, 2, replace=False)
@@ -55,6 +58,9 @@ class SimulatedAnnealing(BaseAlgorithm):
                     if coste_actual < coste_mejor:
                         mejor = np.copy(actual)
                         coste_mejor = coste_actual
+                        
+                # Record convergence of the best found so far
+                history.append((evaluations, coste_mejor))
             
             # Cauchy Cooling
             t = t0 / (1.0 + (k + 1))
@@ -62,4 +68,4 @@ class SimulatedAnnealing(BaseAlgorithm):
             if t < 0.001:
                 break
                 
-        return mejor, coste_mejor
+        return mejor, coste_mejor, history

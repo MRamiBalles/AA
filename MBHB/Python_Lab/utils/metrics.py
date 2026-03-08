@@ -5,12 +5,18 @@ class PerformanceMetrics:
     def __init__(self):
         self.results = []
 
-    def log_result(self, algo_name, instance_name, cost, time_taken, parameters=None):
+    def log_result(self, algo_name, instance_name, cost, time_taken, history=None, parameters=None):
+        # Convert history tuples to native python ints to avoid json serialization error (numpy int64)
+        clean_history = []
+        if history:
+            clean_history = [(int(h[0]), int(h[1])) for h in history]
+            
         result = {
             "algorithm": algo_name,
             "instance": instance_name,
             "cost": int(cost),
             "time_seconds": float(time_taken),
+            "history": clean_history,
             "parameters": parameters or {}
         }
         self.results.append(result)

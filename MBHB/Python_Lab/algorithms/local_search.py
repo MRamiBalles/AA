@@ -21,8 +21,8 @@ class LocalSearch(BaseAlgorithm):
         current_cost = calculate_fitness(current_perm, self.flow, self.distance)
         
         improved = True
-        # Track evaluations for metrics
         evaluations = 1 
+        history = [(evaluations, current_cost)]
         
         while improved:
             improved = False
@@ -34,6 +34,8 @@ class LocalSearch(BaseAlgorithm):
                 for j_idx in range(i_idx + 1, self.n):
                     j = indices[j_idx]
                     
+                    evaluations += 1
+                    
                     # Optimized change calculation O(n)
                     delta = calculate_delta(current_perm, self.flow, self.distance, i, j)
                     
@@ -42,8 +44,9 @@ class LocalSearch(BaseAlgorithm):
                         current_perm[i], current_perm[j] = current_perm[j], current_perm[i]
                         current_cost += delta
                         improved = True
+                        history.append((evaluations, current_cost))
                         break # Break inner loop
                 if improved:
                     break # Break outer loop
                     
-        return current_perm, current_cost
+        return current_perm, current_cost, history
